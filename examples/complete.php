@@ -36,7 +36,7 @@ $overlayText = '-vf drawtext="fontfile='. $font_style .':\text='. $textValue .':
 *	Create command
 */
 $FFmpeg = new FFmpeg( '/usr/bin/ffmpeg' );
-$FFmpeg->input( '/var/www/html/centaur.mpg' );
+$FFmpeg->input( '/var/www/html/comerit.mp4' );
 
 if (!$resetAll) {
 	$FFmpeg->sameq('-i /var/www/html/logo.png \-filter_complex "overlay=x=(main_w-overlay_w)/12:y=(main_h-overlay_h)/12"');
@@ -114,11 +114,11 @@ if (isset($_POST['overlay_text'])) {
 				</div>
 			</div>
 			
-			<div class="col-md-4">
+			<!-- <div class="col-md-4">
 				<div class="form-group">
 					<input type="file" class="form-control" name="image">
 				</div>
-			</div>
+			</div> -->
 			<div class="col-md-4">
 				<div class="form-group">
 					<button type="submit" class="btn  btn-primary">Save</button>
