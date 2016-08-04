@@ -36,10 +36,10 @@ $overlayText = '-vf drawtext="fontfile='. $font_style .':\text='. $textValue .':
 *	Create command
 */
 $FFmpeg = new FFmpeg( '/usr/bin/ffmpeg' );
-$FFmpeg->input( '/var/www/html/comerit.mp4' );
+$FFmpeg->input( './inputs/centaur.mp4' );
 
 if (!$resetAll) {
-	$FFmpeg->sameq('-i /var/www/html/logo.png \-filter_complex "overlay=x=(main_w-overlay_w)/12:y=(main_h-overlay_h)/12"');
+	$FFmpeg->sameq('-i ./inputs/logo.png \-filter_complex "overlay=x=(main_w-overlay_w)/12:y=(main_h-overlay_h)/12"');
 }
 
 // $FFmpeg->transpose( 0 )->vflip()->grayScale()->vcodec('h264')->frameRate('30000/1001');
@@ -50,15 +50,15 @@ if (!$resetAll) {
 // 	$FFmpeg->call( $option , $values );
 // }
 
-$FFmpeg->output('/var/www/html/ffmpegdemo/examples/outputs/new.mp4' , 'mp4' )->ready();
+$FFmpeg->output('./outputs/new.mp4' , 'mp4' )->ready();
 
 if (isset($_POST['overlay_text'])) {
 	$FFmpeg = new FFmpeg( '/usr/bin/ffmpeg' );
-	$FFmpeg->input( '/var/www/html/ffmpegdemo/examples/outputs/new.mp4' );
+	$FFmpeg->input( './outputs/new.mp4' );
 
 	$FFmpeg->sameq($overlayText);
 
-	$FFmpeg->output('/var/www/html/ffmpegdemo/examples/outputs/new.mp4' , 'mp4' )->ready();
+	$FFmpeg->output('./outputs/new.mp4' , 'mp4' )->ready();
 }
 
 // print($FFmpeg->command);
